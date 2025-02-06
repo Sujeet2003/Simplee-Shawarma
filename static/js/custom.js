@@ -30,7 +30,6 @@ window.addEventListener('scroll', function () {
     }
 });
 
-
 // animations for hero-text
 function restartAnimation() {
 const chars = document.querySelectorAll('.char');
