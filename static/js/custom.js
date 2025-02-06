@@ -39,4 +39,17 @@ chars.forEach(char => {
     char.style.animation = '';
 });
 }
-setInterval(restartAnimation, 4000);
+setInterval(restartAnimation, 3000);
+
+// about customer reviews
+const emojis = document.querySelectorAll('.emoji');
+emojis.forEach(emoji => {
+    emoji.addEventListener('click', (e) => {
+    const card = e.target.closest('.review-card');
+    const thanksMessage = card.querySelector('.thanks-message');
+    thanksMessage.style.display = 'block';
+    setTimeout(() => {
+        thanksMessage.style.display = 'none';
+    }, 1500);
+    });
+});
