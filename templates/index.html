@@ -71,7 +71,57 @@
         </div>
 
         <!-- footer -->
+        <footer>
+            <div
+                class="container d-flex align-items-center justify-content-sm-between">
+                <div class="locations">
+                    <ul class="d-flex flex-column list-unstyled">
+                        <li><a href>HSR Layout, Bengaluru</a></li>
+                        <li><a href>BTM Layout, Bengaluru</a></li>
+                        <li><a href>Marathahalli, Bengaluru</a></li>
+                        <li><a href>Electronic City, Bengaluru</a></li>
+                    </ul>
+                </div>
+                <!-- <div class="others">
+                    <ul class="d-flex flex-column list-unstyled">
+                        <li>Become a Franchisee</li>
+                        <li>Legal Notices</li>
+                        <li>Merchant Policies</li>
+                        <li>Terms & conditions</li>
+                    </ul>
+                </div> -->
+                <ul class="d-flex flex-column list-unstyled">
+                    <li data-content="Become a Franchisee">Become a
+                        Franchisee</li>
+                    <li data-content="Legal Notices">Legal Notices</li>
+                    <li data-content="Merchant Policies">Merchant Policies</li>
+                    <li data-content="Terms & conditions">Terms &
+                        conditions</li>
+                </ul>
 
+                <!-- Modal Structure -->
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span id="close-modal" class="close">&times;</span>
+                        <p id="modal-text"></p>
+                    </div>
+                </div>
+
+                <div class="contacts">
+                    <ul class="d-flex flex-column list-unstyled">
+                        <li><a
+                                href="mailto:simpleeshawarma@gmail.com">simpleeshawarma@gmail.com</a></li>
+                        <li><a
+                                href="https://www.google.com/maps/dir//Simplee+Shawarma,+68,+Parangi+Palaya,+Sector+2,+HSR+Layout,+Bengaluru,+Karnataka+560102/@12.9087505,77.6501267,19z/data=!4m17!1m7!3m6!1s0x3bae15006dcb94b5:0xc5c610a304b8a0a!2sSimplee+Shawarma!8m2!3d12.9087676!4d77.6507446!16s%2Fg%2F11vm52d23g!4m8!1m0!1m5!1m1!1s0x3bae15006dcb94b5:0xc5c610a304b8a0a!2m2!1d77.6507448!2d12.9087676!3e3?entry=ttu&g_ep=EgoyMDI1MDIwNC4wIKXMDSoASAFQAw%3D%3D2"
+                                target="_blank">No
+                                32, N B K Complex, HSR Layout, Bengaluru,
+                                Karnataka, 560102</a></li>
+                        <li>099694 53174</li>
+                        <li>Enquiry Now</li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
         <!-- bootstrap script -->
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -79,6 +129,6 @@
             crossorigin="anonymous"></script>
 
         <!-- custom javascript -->
-        <script src="static/js/custom.js"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
     </body>
 </html>

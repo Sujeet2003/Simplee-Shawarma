@@ -53,3 +53,34 @@ emojis.forEach(emoji => {
     }, 1500);
     });
 });
+
+// footer section
+// Get the modal and its components
+const modal = document.getElementById("modal");
+const modalText = document.getElementById("modal-text");
+const closeModal = document.getElementById("close-modal");
+
+// Get all list items
+const listItems = document.querySelectorAll("ul.d-flex li");
+
+// Add click event listeners to each list item
+listItems.forEach(item => {
+    item.addEventListener("click", () => {
+        // Set the modal content based on the clicked item's data-content attribute
+        modalText.textContent = item.getAttribute("data-content");
+        // Display the modal
+        modal.style.display = "block";
+    });
+});
+
+// Close the modal when the close button is clicked
+closeModal.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+// Close the modal when clicking outside of it
+window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+});
