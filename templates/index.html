@@ -22,6 +22,10 @@
         <link rel="stylesheet"
             href="{% static 'css/style.css' %}?{% now 'U' %}">
 
+        <!-- load contents.yaml file -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+
         <title>Simplee Shawarma | Let's roll it!</title>
     </head>
     <body>
@@ -82,29 +86,14 @@
                         <li><a href>Electronic City, Bengaluru</a></li>
                     </ul>
                 </div>
-                <!-- <div class="others">
+
+                <div class="others">
                     <ul class="d-flex flex-column list-unstyled">
                         <li>Become a Franchisee</li>
                         <li>Legal Notices</li>
                         <li>Merchant Policies</li>
                         <li>Terms & conditions</li>
                     </ul>
-                </div> -->
-                <ul class="d-flex flex-column list-unstyled">
-                    <li data-content="Become a Franchisee">Become a
-                        Franchisee</li>
-                    <li data-content="Legal Notices">Legal Notices</li>
-                    <li data-content="Merchant Policies">Merchant Policies</li>
-                    <li data-content="Terms & conditions">Terms &
-                        conditions</li>
-                </ul>
-
-                <!-- Modal Structure -->
-                <div id="modal" class="modal">
-                    <div class="modal-content">
-                        <span id="close-modal" class="close">&times;</span>
-                        <p id="modal-text"></p>
-                    </div>
                 </div>
 
                 <div class="contacts">
