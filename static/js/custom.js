@@ -18,18 +18,6 @@ document.addEventListener('click', function (event) {
     }
 });
 
-// to change the navbar background
-window.addEventListener('scroll', function () {
-    const navbar = document.getElementById('mainNavbar');
-    if (window.scrollY > window.innerHeight) {
-        navbar.classList.remove('bg-transparent');
-        navbar.classList.add('bg-dark');
-    } else {
-        navbar.classList.add('bg-transparent');
-        navbar.classList.remove('bg-dark');
-    }
-});
-
 // animations for hero-text
 function restartAnimation() {
 const chars = document.querySelectorAll('.char');

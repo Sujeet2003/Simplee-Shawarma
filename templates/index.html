@@ -18,21 +18,22 @@
             rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
             crossorigin="anonymous">
+
+        <!-- W3schools Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet">
+
         <!-- custom css -->
         <link rel="stylesheet"
             href="{% static 'css/style.css' %}?{% now 'U' %}">
 
-        <!-- load contents.yaml file -->
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-
         <title>Simplee Shawarma | Let's roll it!</title>
+
     </head>
     <body>
         <!-- navbar -->
         <nav
-            class="navbar navbar-expand-lg navbar-dark fixed-top"
-            id="mainNavbar">
+            class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="{% static 'images/logo.png' %}" alt="Bootstrap"
@@ -47,11 +48,15 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page"
-                                href="#">Home</a>
+                            <a
+                                class="nav-link {% if request.path == '/' %}active{% endif %}"
+                                aria-current="page"
+                                href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a
+                                class="nav-link {% if request.path == '/about-simplee-shawarma/' %}active{% endif %}"
+                                href="{% url 'about_us' %}">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Menu</a>
@@ -77,37 +82,101 @@
         <!-- footer -->
         <footer>
             <div
-                class="container d-flex align-items-center justify-content-sm-between">
-                <div class="locations">
-                    <ul class="d-flex flex-column list-unstyled">
-                        <li><a href>HSR Layout, Bengaluru</a></li>
-                        <li><a href>BTM Layout, Bengaluru</a></li>
-                        <li><a href>Marathahalli, Bengaluru</a></li>
-                        <li><a href>Electronic City, Bengaluru</a></li>
-                    </ul>
+                class="container">
+                <div class="contact d-flex justify-content-between flex-wrap">
+                    <p><img width="30" height="30"
+                            src="https://img.icons8.com/isometric/50/secured-letter.png"
+                            alt="secured-letter" /> <a
+                            href="mailto:simpleeshawarma@gmail.com">simpleeshawarma@gmail.com</a></p>
+                    <p><img width="30" height="30"
+                            src="https://img.icons8.com/isometric/50/phone.png"
+                            alt="phone" />(+91) 89044-45805</p>
+                    <p><img width="30" height="30"
+                            src="https://img.icons8.com/isometric/50/place-marker.png"
+                            alt="place-marker" /><a
+                            href="https://www.google.com/maps/dir//Simplee+Shawarma,+68,+Parangi+Palaya,+Sector+2,+HSR+Layout,+Bengaluru,+Karnataka+560102/@12.9087505,77.6501267,19z/data=!4m17!1m7!3m6!1s0x3bae15006dcb94b5:0xc5c610a304b8a0a!2sSimplee+Shawarma!8m2!3d12.9087676!4d77.6507446!16s%2Fg%2F11vm52d23g!4m8!1m0!1m5!1m1!1s0x3bae15006dcb94b5:0xc5c610a304b8a0a!2m2!1d77.6507448!2d12.9087676!3e3?entry=ttu&g_ep=EgoyMDI1MDIwNC4wIKXMDSoASAFQAw%3D%3D2"
+                            target="_blank">No
+                            32, N B K Complex, HSR Layout,
+                            Bengaluru,
+                            Karnataka, 560102</a></p>
+                    <p><img width="30" height="30"
+                            src="https://img.icons8.com/isometric/50/questions.png"
+                            alt="questions" />Enquiry Now</p>
                 </div>
-
-                <div class="others">
-                    <ul class="d-flex flex-column list-unstyled">
-                        <li>Become a Franchisee</li>
-                        <li>Legal Notices</li>
-                        <li>Merchant Policies</li>
-                        <li>Terms & conditions</li>
-                    </ul>
+                <hr>
+                <div
+                    class="others d-flex justify-content-between align-items-center flex-wrap">
+                    <div class="locations">
+                        <p><img width="20" height="20"
+                                src="https://img.icons8.com/isometric/50/marker.png"
+                                alt="marker" /><a
+                                href="https://g.co/kgs/uVV78Rq">HSR Layout,
+                                Bengaluru</a></p>
+                        <p><img width="20" height="20"
+                                src="https://img.icons8.com/isometric/50/marker.png"
+                                alt="marker" /><a href>BTM Layout,
+                                Bengaluru</a></p>
+                        <p><img width="20" height="20"
+                                src="https://img.icons8.com/isometric/50/marker.png"
+                                alt="marker" /><a
+                                href="https://g.co/kgs/5g1vdkF">Marathahalli,
+                                Bengaluru</a></p>
+                        <p><img width="20" height="20"
+                                src="https://img.icons8.com/isometric/50/marker.png"
+                                alt="marker" /><a href>Electronic City,
+                                Bengaluru</a></p>
+                    </div>
+                    <div class="rules-and_regulations">
+                        <p><img width="20" height="20"
+                                src="https://img.icons8.com/offices/30/small-business.png"
+                                alt="small-business" /><a
+                                href="{% url 'rules_and_regulations' %}">
+                                Become
+                                a
+                                Franchisee</a></p>
+                        <p><img width="20" height="20"
+                                src="https://img.icons8.com/isometric/50/high-priority.png"
+                                alt="high-priority" /><a
+                                href="{% url 'rules_and_regulations' %}">
+                                Legal
+                                Notices</a></p>
+                        <p><img width="20" height="20"
+                                src="https://img.icons8.com/isometric/50/inspection.png"
+                                alt="inspection" /><a
+                                href="{% url 'rules_and_regulations' %}">
+                                Merchant
+                                Policies</a></p>
+                        <p><img width="20" height="20"
+                                src="https://img.icons8.com/offices/30/registered-trademark.png"
+                                alt="registered-trademark" /><a
+                                href="{% url 'rules_and_regulations' %}">
+                                Terms
+                                &
+                                conditions</a></p>
+                    </div>
                 </div>
-
-                <div class="contacts">
-                    <ul class="d-flex flex-column list-unstyled">
-                        <li><a
-                                href="mailto:simpleeshawarma@gmail.com">simpleeshawarma@gmail.com</a></li>
-                        <li><a
-                                href="https://www.google.com/maps/dir//Simplee+Shawarma,+68,+Parangi+Palaya,+Sector+2,+HSR+Layout,+Bengaluru,+Karnataka+560102/@12.9087505,77.6501267,19z/data=!4m17!1m7!3m6!1s0x3bae15006dcb94b5:0xc5c610a304b8a0a!2sSimplee+Shawarma!8m2!3d12.9087676!4d77.6507446!16s%2Fg%2F11vm52d23g!4m8!1m0!1m5!1m1!1s0x3bae15006dcb94b5:0xc5c610a304b8a0a!2m2!1d77.6507448!2d12.9087676!3e3?entry=ttu&g_ep=EgoyMDI1MDIwNC4wIKXMDSoASAFQAw%3D%3D2"
-                                target="_blank">No
-                                32, N B K Complex, HSR Layout, Bengaluru,
-                                Karnataka, 560102</a></li>
-                        <li>099694 53174</li>
-                        <li>Enquiry Now</li>
-                    </ul>
+                <hr>
+                <div
+                    class="social-media text-center">
+                    <span><a href><img width="48" height="48"
+                                src="https://img.icons8.com/color/48/instagram-new--v1.png"
+                                alt="instagram-new--v1" /></a></span>
+                    <span><a href><img width="48" height="48"
+                                src="https://img.icons8.com/color/48/twitter--v1.png"
+                                alt="twitter--v1" /></a></span>
+                    <span><a href><img width="48" height="48"
+                                src="https://img.icons8.com/color/48/facebook-new.png"
+                                alt="facebook-new" /></a></span>
+                    <span><a href><img width="48" height="48"
+                                src="https://img.icons8.com/color/48/youtube-play.png"
+                                alt="youtube-play" /></a></span>
+                    <span>
+                        <p class="my-2 fw-lighter fst-italic">&copy;2025-2030
+                            All
+                            Right Reserved<br>
+                            Developed by
+                            Sujeet</p>
+                    </span>
                 </div>
             </div>
         </footer>

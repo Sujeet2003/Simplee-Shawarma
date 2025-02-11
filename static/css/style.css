@@ -1,19 +1,10 @@
 .navbar {
-    background: transparent !important;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 100;
-}
-
-#mainNavbar.bg-dark {
-    background-color: rgba(0, 0, 0, 0.85) !important;
-    transition: background-color 0.3s ease;
-}
-
-#mainNavbar.bg-transparent {
-    background-color: transparent !important;
+    background-color: #0b0b0b;
 }
 
 .navbar-toggler {
@@ -28,10 +19,6 @@
     filter: brightness(90%);
 }
 
-body {
-    margin: 0;
-}
-
 .navbar .container-fluid {
     padding: 0 35px !important;
 }
@@ -40,9 +27,8 @@ body {
     color: white;
     padding: 10px 15px;
     font-size: 1rem;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    
 }
+
 .navbar-nav .nav-link.active {
     color: yellow;
     font-weight: bold;
@@ -73,24 +59,42 @@ footer {
     color: aliceblue;
 }
 
-footer .locations a, footer .contacts a {
+footer .container a {
     color: aliceblue;
     text-decoration: none;
 }
 
-footer .locations a:hover, footer .contacts a:hover, footer .others li:hover {
+footer .container p {
+    margin-top: initial;
+}
+
+footer .container a:hover {
     color: #c5c5c5;
 }
 
-footer ul li {
-    margin: 5px 0 !important;
+footer .container .social-media span {
+    margin: 0 0 0 10px;
 }
 
-footer .others li, footer .contacts li {
-    cursor: pointer;
+footer .container .social-media span a {
+  transition: filter 0.3s ease;
 }
 
+footer .container .social-media span a:hover {
+  filter: brightness(80%);
+}
 
+@media (max-width: 450px) {
+    footer .container .contact {
+        flex-direction: column !important;
+    }
+}
+
+@media (max-width: 800px) {
+    footer .container .social-media span {
+        margin: 0;
+    }
+}
 
 /* home hero(main) section */
 .hero-image {
@@ -365,13 +369,19 @@ footer .others li, footer .contacts li {
     width: 100%;
     background-color: #ababab;
     padding-bottom: 20px;
+    overflow: hidden;
+    position: relative;
 }
 
 .reviews-container .card-container {
     display: flex;
     gap: 16px;
-    overflow-x: auto;
     padding: 10px;
+    animation: scrollCards 30s linear infinite;
+}
+
+.reviews-container .card-container:hover {
+    animation-play-state: paused;
 }
 
 .reviews-container .review-card {
@@ -382,16 +392,25 @@ footer .others li, footer .contacts li {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: left;
     position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reviews-container .review-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .reviews-container .review-card h3 {
     color: #444;
     font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 .reviews-container .review-card p {
     color: #666;
     margin: 10px 0;
+    font-size: 1rem;
 }
 
 .reviews-container .emoji-container {
@@ -422,8 +441,68 @@ footer .others li, footer .contacts li {
     border-radius: 8px;
 }
 
+@keyframes scrollCards {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 @media (max-width: 1000px) {
     .reviews-container .card-container {
-        flex-wrap: wrap;
+        animation: scrollCardsMobile 30s linear infinite;
     }
+
+    .reviews-container .review-card {
+        min-width: 250px;
+        padding: 15px;
+    }
+
+    .reviews-container .review-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .reviews-container .review-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .reviews-container .card-container {
+        animation: scrollCardsMobile 20s linear infinite;
+    }
+
+    .reviews-container .review-card {
+        min-width: 200px;
+        padding: 10px;
+    }
+
+    .reviews-container .review-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .reviews-container .review-card p {
+        font-size: 0.85rem;
+    }
+
+    .reviews-container .emoji {
+        font-size: 25px;
+    }
+}
+
+@keyframes scrollCardsMobile {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-200%);
+    }
+}
+
+/* about section */
+
+.about-section .container {
+    padding-top: 85px;
 }
