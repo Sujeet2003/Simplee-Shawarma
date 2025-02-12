@@ -236,8 +236,9 @@ footer .container .social-media span a:hover {
 
 /* Home Section */
 .home-main-section {
-    background-color: rgb(255, 88, 88);
-    padding: 20px 20px 0 20px;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    padding: 20px 20px 30px 20px;
+    
 }
 .home-section {
     display: flex;
@@ -310,6 +311,7 @@ footer .container .social-media span a:hover {
 .amenities-section {
     padding: 15px 0;
     border-radius: 10px;
+    box-shadow: 7px 7px 5px #ec8bff;
 }
 
 .amenities-section .card-body {
@@ -346,28 +348,28 @@ footer .container .social-media span a:hover {
 }
 
 /* success story */
-.journey-section {
+.success-section {
     padding: 30px 0;
-    /* background-color: #EDF4C2; */
+    background: linear-gradient(to right, #ff7e5f, #feb47b);;
 }
-.journey-section .highlight {
+.success-section .highlight {
     color: #e85d04;
     font-weight: bold;
 }
-.journey-section .rounded-card {
+.success-section .rounded-card {
     cursor: pointer;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12), 
               0 4px 6px rgba(0, 0, 0, 0.08);
 }
 
-.journey-section p {
+.success-section p {
     font-size: 1.3rem;
 }
 
 /* review section */
 .reviews-container {
     width: 100%;
-    background-color: #ababab;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
     padding-bottom: 20px;
     overflow: hidden;
     position: relative;
@@ -389,7 +391,7 @@ footer .container .social-media span a:hover {
     padding: 20px;
     min-width: 300px;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 7px 7px 8px rgba(0, 0, 0, 0.8);
     text-align: left;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -502,7 +504,163 @@ footer .container .social-media span a:hover {
 }
 
 /* about section */
+.about-section {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    padding-top: 110px;
+}
 
-.about-section .container {
-    padding-top: 85px;
+.about-section .about-image img {
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+}
+
+.about-section .btn-custom {
+    background: #ffe600;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.about-section .btn-custom:hover {
+    background: #ffcc00;
+    color: #000;
+}
+
+.journey-section {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    padding: 50px 0;
+}
+
+.journey-section .journey-title {
+    color: #000;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.journey-section .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+}
+
+.journey-section .timeline::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    background: #ffe600;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.journey-section .timeline-box {
+    position: relative;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    padding: 20px;
+    width: 45%;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.journey-section .timeline-box.left {
+    left: 0;
+    text-align: right;
+}
+
+.journey-section .timeline-box.right {
+    left: 55%;
+    text-align: left;
+}
+
+.journey-section .timeline-box::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background: #ffe600;
+    border-radius: 50%;
+    left: 110%;
+    transform: translateX(-50%);
+}
+
+.journey-section .timeline-box.right::before {
+    left: -10%;
+}
+
+.journey-section .flag {
+    background: #ff7e5f;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 15px 0 15px 0;
+    font-weight: bold;
+    display: inline-block;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+section .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section .slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideUp 1s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about-section .about-image img {
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: popIn 1s ease-in-out forwards 0.5s;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.about-section .btn-custom {
+    transition: transform 0.3s ease-in-out;
 }
