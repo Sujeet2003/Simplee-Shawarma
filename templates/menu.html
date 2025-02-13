@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<section class="menu-section">
+    <div class="container">
+        <h2 class="text-center text-primary">Starter Items</h2>
+        <ul class="item-list">
+            {% for starter_item in starter_items %}
+            <li class="item">
+                <div class="item-header">
+                    <span class="serial">{{starter_item.serial_number}}.</span>
+                    <span class="item-name">{{ starter_item.items_name }}</span>
+                </div>
+                <hr class="item-separator">
+                <div class="item-details">
+                    <span class="sub-item">
+                        {% if starter_item.sub_items_name == 'none' %}
+                        N/A
+                        {% else %}
+                        {{ starter_item.sub_items_name }}
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        Half: ₹
+                        {% if starter_item.half_price is not None %}
+                        {{ starter_item.half_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        Full: ₹
+                        {% if starter_item.full_price is not None %}
+                        {{ starter_item.full_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock %}

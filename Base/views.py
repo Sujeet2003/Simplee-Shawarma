@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.urls import reverse
+from Base.models import Starter
 
 
 # Create your views here.
@@ -11,3 +11,10 @@ def regulations_content(request):
 
 def about_us(request):
     return render(request, 'about.html')
+
+def menu_items(request):
+    starter_items = Starter.objects.all()
+    context = {
+        'starter_items': starter_items,
+    }
+    return render(request, 'menu.html', context)
