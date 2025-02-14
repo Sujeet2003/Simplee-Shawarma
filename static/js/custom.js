@@ -42,4 +42,4 @@ emojis.forEach(emoji => {
     });
 });
 
-// footer section
+// contact section

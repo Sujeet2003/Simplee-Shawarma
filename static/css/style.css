@@ -693,7 +693,6 @@ section .slide-up {
 }
 
 .menu-section .container .item-list .item {
-    /* background: linear-gradient(135deg, #ff9966, #ff5e62); */
     background: linear-gradient(135deg, #fed86e, #ff8a8c);
     color: rgb(37, 37, 37);
     font-weight: bold;
@@ -742,4 +741,11 @@ section .slide-up {
     .menu-section .container ul {
         width: 100%;
     }
+}
+
+/* Contact section */
+.contact-section {
+    padding-top: 100px;
+    padding-bottom: 10px;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
 }

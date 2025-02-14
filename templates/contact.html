@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="contact-section">
+    <div class="container">
+        <h2 class="text-center">Contact Us</h2>
+        <form id="contact-form" method="post" action="{% url 'contact_us' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_name" class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" id="id_name"
+                    required>
+            </div>
+            <div class="mb-3">
+                <label for="id_email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control"
+                    id="id_email" required>
+            </div>
+            <div class="mb-3">
+                <label for="id_subject" class="form-label">Subject</label>
+                <input type="text" name="subject" class="form-control"
+                    id="id_subject"
+                    required>
+            </div>
+            <div class="mb-3">
+                <label for="id_message" class="form-label">Message</label>
+                <textarea name="message" class="form-control" id="id_message"
+                    rows="4" required></textarea>
+            </div>
+            <button type="submit" onclick="sendMail()"
+                class="btn btn-primary">Send Message</button>
+        </form>
+        <div id="success-message" class="alert alert-success mt-3 d-none">
+            Message sent successfully!
+        </div>
+    </div>
+</section>
+
+{% endblock %}

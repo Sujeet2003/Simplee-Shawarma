@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from Base.models import Starter, Shawarma, ShawarmaPlate, LoadedShawarma, CombosForOne, CombosForTwo, HealthyShawarma, OnlyForCheeseLovers, AddOn
-
+from Base.forms import ContactForm
 
 # Create your views here.
 def index(request):
@@ -38,3 +38,6 @@ def menu_items(request):
     }
 
     return render(request, 'menu.html', context)
+
+def contact_us(request):
+    return render(request, "contact.html")

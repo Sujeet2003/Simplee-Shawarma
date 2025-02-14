@@ -64,10 +64,9 @@
                                 href="{% url 'menu_items' %}">Menu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a
+                                class="nav-link {% if request.path == '/contact-us/' %}active{% endif %}"
+                                href="{% url 'contact_us' %}">Contact</a>
                         </li>
                     </ul>
                 </div>
