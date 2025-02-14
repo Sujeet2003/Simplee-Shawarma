@@ -3,14 +3,16 @@
 
 {% block content %}
 <section class="menu-section">
+    <h2 class="text-center text-body-secondary">ITEMS WE SERVE</h2>
     <div class="container">
-        <h2 class="text-center text-primary">Starter Items</h2>
+        <!-- Starter Items -->
         <ul class="item-list">
+            <h4 class="text-center text-success">STARTER</h4>
             {% for starter_item in starter_items %}
             <li class="item">
                 <div class="item-header">
-                    <span class="serial">{{starter_item.serial_number}}.</span>
-                    <span class="item-name">{{ starter_item.items_name }}</span>
+                    <span class="item-name fst-italic fs-5">
+                        {{ starter_item.items_name }}</span>
                 </div>
                 <hr class="item-separator">
                 <div class="item-details">
@@ -23,7 +25,7 @@
                     </span>
                     <hr class="item-separator">
                     <span class="price">
-                        Half: ₹
+                        <strong>Half:</strong> ₹
                         {% if starter_item.half_price is not None %}
                         {{ starter_item.half_price }}
                         {% else %}
@@ -32,9 +34,337 @@
                     </span>
                     <hr class="item-separator">
                     <span class="price">
-                        Full: ₹
+                        <strong>Full:</strong> ₹
                         {% if starter_item.full_price is not None %}
                         {{ starter_item.full_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Shawarma Items -->
+        <ul class="item-list">
+            <h4 class="text-center text-success">SHAWARMA</h4>
+            {% for shawarma_item in shawarma_items %}
+            <li class="item">
+                <div class="item-header">
+                    <span class="item-name fst-italic fs-5">
+                        {{ shawarma_item.items_name }}</span>
+                </div>
+                <hr class="item-separator">
+                <div class="item-details">
+                    <span class="sub-item">
+                        {% if shawarma_item.sub_items_name == 'none' %}
+                        N/A
+                        {% else %}
+                        {{ shawarma_item.sub_items_name }}
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Half:</strong> ₹
+                        {% if shawarma_item.half_price is not None %}
+                        {{ shawarma_item.half_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Full:</strong> ₹
+                        {% if shawarma_item.full_price is not None %}
+                        {{ shawarma_item.full_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!--Shawarma Plate -->
+        <ul class="item-list">
+            <h4 class="text-center text-success">SHAWARMA PLATE</h4>
+            {% for shawarma_item in shawarma_plate_items %}
+            <li class="item">
+                <div class="item-header">
+                    <span class="item-name fst-italic fs-5">
+                        {{ shawarma_item.items_name }}</span>
+                </div>
+                <hr class="item-separator">
+                <div class="item-details">
+                    <span class="sub-item">
+                        {% if shawarma_item.sub_items_name == 'none' %}
+                        N/A
+                        {% else %}
+                        {{ shawarma_item.sub_items_name }}
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Half:</strong> ₹
+                        {% if shawarma_item.half_price is not None %}
+                        {{ shawarma_item.half_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Full:</strong> ₹
+                        {% if shawarma_item.full_price is not None %}
+                        {{ shawarma_item.full_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Loaded Shawarma -->
+        <ul class="item-list">
+            <h4 class="text-center text-success">LOADED SHAWARMA</h4>
+            {% for shawarma_item in loaded_shawarma_items %}
+            <li class="item">
+                <div class="item-header">
+                    <span class="item-name fst-italic fs-5">
+                        {{ shawarma_item.items_name }}</span>
+                </div>
+                <hr class="item-separator">
+                <div class="item-details">
+                    <span class="sub-item">
+                        {% if shawarma_item.sub_items_name == 'none' %}
+                        N/A
+                        {% else %}
+                        {{ shawarma_item.sub_items_name }}
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Half:</strong> ₹
+                        {% if shawarma_item.half_price is not None %}
+                        {{ shawarma_item.half_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Full:</strong> ₹
+                        {% if shawarma_item.full_price is not None %}
+                        {{ shawarma_item.full_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- cheese lovers -->
+        <ul class="item-list">
+            <h4 class="text-center text-success">CHEESE LOVERS</h4>
+            {% for shawarma_item in cheese_lovers_items %}
+            <li class="item">
+                <div class="item-header">
+                    <span class="item-name fst-italic fs-5">
+                        {{ shawarma_item.items_name }}</span>
+                </div>
+                <hr class="item-separator">
+                <div class="item-details">
+                    <span class="sub-item">
+                        {% if shawarma_item.sub_items_name == 'none' %}
+                        N/A
+                        {% else %}
+                        {{ shawarma_item.sub_items_name }}
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Half:</strong> ₹
+                        {% if shawarma_item.half_price is not None %}
+                        {{ shawarma_item.half_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Full:</strong> ₹
+                        {% if shawarma_item.full_price is not None %}
+                        {{ shawarma_item.full_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Healthy Shawarma -->
+        <ul class="item-list">
+            <h4 class="text-center text-success">HEALTHY SHAWARMA</h4>
+            {% for shawarma_item in healthy_shawarma_items %}
+            <li class="item">
+                <div class="item-header">
+                    <span class="item-name fst-italic fs-5">
+                        {{ shawarma_item.items_name }}</span>
+                </div>
+                <hr class="item-separator">
+                <div class="item-details">
+                    <span class="sub-item">
+                        {% if shawarma_item.sub_items_name == 'none' %}
+                        N/A
+                        {% else %}
+                        {{ shawarma_item.sub_items_name }}
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Half:</strong> ₹
+                        {% if shawarma_item.half_price is not None %}
+                        {{ shawarma_item.half_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Full:</strong> ₹
+                        {% if shawarma_item.full_price is not None %}
+                        {{ shawarma_item.full_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Combos for One -->
+        <ul class="item-list">
+            <h4 class="text-center text-success">COMBOS FOR ONE</h4>
+            {% for shawarma_item in combos_for_one_items %}
+            <li class="item">
+                <div class="item-header">
+                    <span class="item-name fst-italic fs-5">
+                        {{ shawarma_item.items_name }}</span>
+                </div>
+                <hr class="item-separator">
+                <div class="item-details">
+                    <span class="sub-item">
+                        {% if shawarma_item.sub_items_name == 'none' %}
+                        N/A
+                        {% else %}
+                        {{ shawarma_item.sub_items_name }}
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Half:</strong> ₹
+                        {% if shawarma_item.half_price is not None %}
+                        {{ shawarma_item.half_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Full:</strong> ₹
+                        {% if shawarma_item.full_price is not None %}
+                        {{ shawarma_item.full_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Combos for Two -->
+        <ul class="item-list">
+            <h4 class="text-center text-success">COMBOS FOR TWO</h4>
+            {% for shawarma_item in combos_for_two_items %}
+            <li class="item">
+                <div class="item-header">
+                    <span class="item-name fst-italic fs-5">
+                        {{ shawarma_item.items_name }}</span>
+                </div>
+                <hr class="item-separator">
+                <div class="item-details">
+                    <span class="sub-item">
+                        {% if shawarma_item.sub_items_name == 'none' %}
+                        N/A
+                        {% else %}
+                        {{ shawarma_item.sub_items_name }}
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Half:</strong> ₹
+                        {% if shawarma_item.half_price is not None %}
+                        {{ shawarma_item.half_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Full:</strong> ₹
+                        {% if shawarma_item.full_price is not None %}
+                        {{ shawarma_item.full_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Adds-On -->
+        <ul class="item-list">
+            <h4 class="text-center text-success">ADDS ON</h4>
+            {% for shawarma_item in add_on_items %}
+            <li class="item">
+                <div class="item-header">
+                    <span class="item-name fst-italic fs-5">
+                        {{ shawarma_item.items_name }}</span>
+                </div>
+                <hr class="item-separator">
+                <div class="item-details">
+                    <span class="sub-item">
+                        {% if shawarma_item.sub_items_name == 'none' %}
+                        N/A
+                        {% else %}
+                        {{ shawarma_item.sub_items_name }}
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Half:</strong> ₹
+                        {% if shawarma_item.half_price is not None %}
+                        {{ shawarma_item.half_price }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                    <hr class="item-separator">
+                    <span class="price">
+                        <strong>Full:</strong> ₹
+                        {% if shawarma_item.full_price is not None %}
+                        {{ shawarma_item.full_price }}
                         {% else %}
                         N/A
                         {% endif %}
