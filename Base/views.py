@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from Base.models import Starter, Shawarma, ShawarmaPlate, LoadedShawarma, CombosForOne, CombosForTwo, HealthyShawarma, OnlyForCheeseLovers, AddOn
-from Base.forms import ContactForm
 
 # Create your views here.
 def index(request):

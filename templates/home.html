@@ -49,7 +49,7 @@
                     shawarma. Contact us through our booking form to order your
                     fast food.
                 </p>
-                <button type="button" class="btn btn-warning">Know More</button>
+                <button type="button" class="btn btn-warning" id="knowMoreBtn">Know More</button>
             </div>
         </div>
         <div class="img-box d-flex">
@@ -230,4 +230,10 @@
         </div>
   </div>
 </section>
+
+<script>
+    document.getElementById("knowMoreBtn").addEventListener("click", function() {
+        window.location.href = "{% url 'about_us' %}";
+    });
+</script>
 {% endblock %}

@@ -102,7 +102,8 @@
                             Karnataka, 560102</a></p>
                     <p><img width="30" height="30"
                             src="https://img.icons8.com/isometric/50/questions.png"
-                            alt="questions" />Enquiry Now</p>
+                            alt="questions" /><span style="cursor: pointer;"
+                            id="enquiryNow()">Enquiry Now</span></p>
                 </div>
                 <hr>
                 <div
@@ -115,7 +116,9 @@
                                 Bengaluru</a></p>
                         <p><img width="20" height="20"
                                 src="https://img.icons8.com/isometric/50/marker.png"
-                                alt="marker" /><a href>BTM Layout,
+                                alt="marker" /><a
+                                href="https://maps.app.goo.gl/kwGCYjRVtF36W5sXA">BTM
+                                Layout,
                                 Bengaluru</a></p>
                         <p><img width="20" height="20"
                                 src="https://img.icons8.com/isometric/50/marker.png"
@@ -124,7 +127,8 @@
                                 Bengaluru</a></p>
                         <p><img width="20" height="20"
                                 src="https://img.icons8.com/isometric/50/marker.png"
-                                alt="marker" /><a href>Electronic City,
+                                alt="marker" /><a
+                                href="https://g.co/kgs/zrTNCsd">Electronic City,
                                 Bengaluru</a></p>
                     </div>
                     <div class="rules-and_regulations">
@@ -189,5 +193,10 @@
 
         <!-- custom javascript -->
         <script src="{% static 'js/custom.js' %}"></script>
+        <script>
+            document.getElementById("enquiryNow()").addEventListener("click", function() {
+                window.location.href = "{% url 'contact_us' %}";
+            });
+        </script>
     </body>
 </html>
