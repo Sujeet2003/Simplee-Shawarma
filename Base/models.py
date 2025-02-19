@@ -1,10 +1,12 @@
 from django.db import models
+from Simplee.settings import logger
 
 # Create your models here.
 
 from django.db import models
 
 # Base model to avoid repetition
+logger.info("Creating databases for the given models...")
 class BaseItem(models.Model):
     items_name = models.CharField(max_length=500)
     sub_items_name = models.CharField(max_length=2000)
@@ -12,12 +14,11 @@ class BaseItem(models.Model):
     full_price = models.FloatField(null=True, blank=True)
 
     class Meta:
-        abstract = True  # This prevents Django from creating a table for BaseItem
+        abstract = True
 
     def __str__(self):
         return self.items_name
 
-# Categories inheriting from BaseItem
 class Starter(BaseItem):
     pass
 
@@ -44,3 +45,5 @@ class OnlyForCheeseLovers(BaseItem):
 
 class AddOn(BaseItem):
     pass
+
+logger.info('Databases created for the mentined models successfully.')

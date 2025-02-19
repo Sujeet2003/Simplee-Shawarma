@@ -1,18 +1,22 @@
 from django.shortcuts import render, redirect
 from Base.models import Starter, Shawarma, ShawarmaPlate, LoadedShawarma, CombosForOne, CombosForTwo, HealthyShawarma, OnlyForCheeseLovers, AddOn
+from Simplee.settings import logger
 
 # Create your views here.
 def index(request):
+    logger.info("Home page rendered...")
     return render(request, "home.html")
 
 def regulations_content(request):
+    logger.info("Company Policies rendered...")
     return render(request, 'contents.html')
 
 def about_us(request):
+    logger.info("About Us Page rendered...")
     return render(request, 'about.html')
 
 def menu_items(request):
-    # Fetch all items for each category
+    logger.info("Fetching all the menu items from databases...")
     starter_items = Starter.objects.all()
     shawarma_items = Shawarma.objects.all()
     shawarma_plate_items = ShawarmaPlate.objects.all()
@@ -35,8 +39,11 @@ def menu_items(request):
         'cheese_lovers_items': cheese_lovers_items,
         'add_on_items': add_on_items,
     }
+    logger.info("Menu Items rendered to the page...")
+    logger.info("Menu page rendered...")
 
     return render(request, 'menu.html', context)
 
 def contact_us(request):
+    logger.info("Contact Us Page rendered...")
     return render(request, "contact.html")
