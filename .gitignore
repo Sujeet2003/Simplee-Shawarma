@@ -1,3 +1,4 @@
 logs/
 .dockerignore
 __pycache__/
+chromedriver.exe
