@@ -1,0 +1,68 @@
+name: Django CI/CD with Docker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    # services:
+    #   postgres:
+    #     image: postgres:13
+    #     env:
+    #       POSTGRES_USER: django
+    #       POSTGRES_PASSWORD: django
+    #       POSTGRES_DB: test_db
+    #     ports:
+    #       - 5432:5432
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run Django Tests
+        env:
+          DATABASE_URL: postgres://django:django@localhost:5432/test_db
+        run: |
+          python manage.py test
+
+      - name: Set up Chrome and Selenium WebDriver
+        run: |
+          sudo apt update
+          sudo apt install -y chromium-chromedriver
+          sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
+
+      - name: Run Selenium Tests
+        run: |
+          python test_manual.py
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Docker Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/django-docker:latest .
+
+      - name: Push Docker Image
+        run: |
+          docker push ${{ secrets.DOCKER_USERNAME }}/django-docker:latest
+
+      # - name: Deploy to Server
+      #   if: success()
+      #   run: |
+      #     ssh user@yourserver "docker pull ${{ secrets.DOCKER_USERNAME }}/django-docker:latest && docker-compose up -d"
