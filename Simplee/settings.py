@@ -89,9 +89,9 @@ WSGI_APPLICATION = 'Simplee.wsgi.application'
 # }
 
 import dj_database_url
-DATABASE_URL = os.getenv("DATABASE_URL")
+# DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL, engine="django.db.backends.mysql"),
+    'default': dj_database_url.parse("mysql://root:AIbHnGhyYGGzNnCwWjLhhNyGZhuHyaWc@nozomi.proxy.rlwy.net:51806/railway", engine="django.db.backends.mysql"),
 }
 
 

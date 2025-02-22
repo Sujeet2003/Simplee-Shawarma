@@ -5,5 +5,5 @@ Django==5.1.6
 sqlparse==0.5.3
 mysqlclient
 pytest
-pytest-django
 dj-database-url==2.3.0
+gunicorn==21.2.0

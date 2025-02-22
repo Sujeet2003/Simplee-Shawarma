@@ -1,4 +1,4 @@
-FROM python:3.10-alpine AS builder
+FROM python:3.11-alpine AS builder
 
 # Install dependencies required for mysqlclient
 RUN apk add --no-cache \
