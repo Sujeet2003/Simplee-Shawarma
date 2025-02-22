@@ -75,19 +75,25 @@ WSGI_APPLICATION = 'Simplee.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 from dotenv import load_dotenv
-from urllib.parse import urlparse
 load_dotenv()
+import dj_database_url
 
-tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+# from urllib.parse import urlparse
+# tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': tmpPostgres.path.decode('utf-8').replace('/', ''),
+#         'USER': tmpPostgres.username,
+#         'PASSWORD': tmpPostgres.password,
+#         'HOST': tmpPostgres.hostname,
+#         'PORT': 5432,
+#     }
+# }
+
+DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': tmpPostgres.path.decode('utf-8').replace('/', ''),
-        'USER': tmpPostgres.username,
-        'PASSWORD': tmpPostgres.password,
-        'HOST': tmpPostgres.hostname,
-        'PORT': 5432,
-    }
+    'default': dj_database_url.parse(DATABASE_URL, engine="django.db.backends.postgresql"),
 }
 
 
