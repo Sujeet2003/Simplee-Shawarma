@@ -88,7 +88,7 @@ jobs:
         env:
           DJANGO_SETTINGS_MODULE: Simplee.settings
         run: |
-          pytest tests.py
+          python manage.py test
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
