@@ -3,3 +3,4 @@ logs/
 __pycache__/
 chromedriver.exe
 structure.txt
+.env
