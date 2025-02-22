@@ -1,5 +1,15 @@
 FROM python:3.10-alpine AS builder
 
+# Install dependencies required for mysqlclient
+RUN apk add --no-cache \
+    mariadb-dev \
+    gcc \
+    musl-dev \
+    python3-dev \
+    libffi-dev \
+    openssl-dev \
+    pkgconfig
+
 WORKDIR /app
 
 COPY requirements.txt .
