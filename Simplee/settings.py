@@ -74,9 +74,6 @@ WSGI_APPLICATION = 'Simplee.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-from dotenv import load_dotenv
-load_dotenv()
-import dj_database_url
 
 # from urllib.parse import urlparse
 # tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
@@ -91,6 +88,7 @@ import dj_database_url
 #     }
 # }
 
+import dj_database_url
 DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASES = {
     'default': dj_database_url.parse(DATABASE_URL, engine="django.db.backends.mysql"),
