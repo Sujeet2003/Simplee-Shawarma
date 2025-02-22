@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-so_52t-4_3!ao(p)&(eh#awmlfu%w8z7)vtu8u$cd+$*tcqr*y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -93,7 +93,7 @@ import dj_database_url
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASES = {
-    'default': dj_database_url.parse(DATABASE_URL, engine="django.db.backends.postgresql"),
+    'default': dj_database_url.parse(DATABASE_URL, engine="django.db.backends.mysql"),
 }
 
 
