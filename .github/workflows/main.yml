@@ -65,7 +65,7 @@ name: Django CI/CD with Docker
 on:
   push:
     branches:
-      - main  # Adjust this if your branch name is different
+      - new-branch  # Adjust this if your branch name is different
 
 jobs:
   test-and-build:
