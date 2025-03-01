@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+from dotenv import load_dotenv
 from pathlib import Path
 import os
 
@@ -96,19 +97,42 @@ import dj_database_url
 #     'default': dj_database_url.parse("mysql://root:AIbHnGhyYGGzNnCwWjLhhNyGZhuHyaWc@nozomi.proxy.rlwy.net:51806/railway", engine="django.db.backends.mysql"),
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'defaultdb',
+#         'USER': 'avnadmin',
+#         'PASSWORD': 'AVNS_8uEdTMpWqbi39U5WrSx',
+#         'HOST': 'simpleeshawarmadb-shawarmadb.l.aivencloud.com',
+#         'PORT': '16038',
+#         'OPTIONS': {
+#             'ssl': {'ssl-mode': 'REQUIRED'},  # Ensure SSL connection
+#         },
+#     }
+# }
+
+load_dotenv()
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'defaultdb',
-        'USER': 'avnadmin',
-        'PASSWORD': 'AVNS_8uEdTMpWqbi39U5WrSx',
-        'HOST': 'simpleeshawarmadb-shawarmadb.l.aivencloud.com',
-        'PORT': '16038',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),  # Correct variable
+        'PORT': os.getenv('DATABASE_PORT', '16038'),  # Default value if not in .env
         'OPTIONS': {
             'ssl': {'ssl-mode': 'REQUIRED'},  # Ensure SSL connection
         },
     }
 }
+
+print("DATABASE_NAME:", os.getenv("DATABASE_NAME"))
+print("DATABASE_USER:", os.getenv("DATABASE_USER"))
+print("DATABASE_PASSWORD:", os.getenv("DATABASE_PASSWORD"))
+print("DATABASE_HOST:", os.getenv("DATABASE_HOST"))
+print("DATABASE_PORT:", os.getenv("DATABASE_PORT"))
+
 
 
 # Password validation
