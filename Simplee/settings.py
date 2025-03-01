@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+from dotenv import load_dotenv
 from pathlib import Path
 import os
 
@@ -76,7 +77,6 @@ WSGI_APPLICATION = 'Simplee.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-from dotenv import load_dotenv
 load_dotenv()
 DATABASES = {
     'default': {
@@ -91,20 +91,6 @@ DATABASES = {
         },
     }
 }
-
-import os
-print("DATABASE HOST:", os.environ.get('DATABASE_HOST'))  # Debugging database host
-print("DATABASE USER:", os.environ.get('DATABASE_USER'))
-print("DATABASE PASSWORD:", os.environ.get('DATABASE_PASSWORD'))
-print("DATABASE NAME:", os.environ.get('DATABASE_NAME'))
-
-print()
-# Debugging: Print environment variables
-print("DATABASE HOST:", os.getenv('DATABASE_HOST'))  
-print("DATABASE USER:", os.getenv('DATABASE_USER'))
-print("DATABASE PASSWORD:", os.getenv('DATABASE_PASSWORD'))
-print("DATABASE NAME:", os.getenv('DATABASE_NAME'))
-
 
 
 
