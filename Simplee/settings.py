@@ -81,16 +81,31 @@ load_dotenv()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST'),  # Correct variable
-        'PORT': os.getenv('DATABASE_PORT', '16038'),  # Default value if not in .env
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),  # Correct variable
+        'PORT': os.getenv('DB_PORT', '16038'),  # Default value if not in .env
         'OPTIONS': {
             'ssl': {'ssl-mode': 'REQUIRED'},  # Ensure SSL connection
         },
     }
 }
+
+import os
+print("DB HOST:", os.environ.get('DB_HOST'))  # Debugging database host
+print("DB USER:", os.environ.get('DB_USER'))
+print("DB PASSWORD:", os.environ.get('DB_PASSWORD'))
+print("DB NAME:", os.environ.get('DB_NAME'))
+
+print()
+# Debugging: Print environment variables
+print("DB HOST:", os.getenv('DB_HOST'))  
+print("DB USER:", os.getenv('DB_USER'))
+print("DB PASSWORD:", os.getenv('DB_PASSWORD'))
+print("DB NAME:", os.getenv('DB_NAME'))
+
+
 
 
 # Password validation
