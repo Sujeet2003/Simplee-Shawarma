@@ -76,24 +76,20 @@ WSGI_APPLICATION = 'Simplee.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-# from urllib.parse import urlparse
-# tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': tmpPostgres.path.decode('utf-8').replace('/', ''),
-#         'USER': tmpPostgres.username,
-#         'PASSWORD': tmpPostgres.password,
-#         'HOST': tmpPostgres.hostname,
-#         'PORT': 5432,
-#     }
-# }
-
-import dj_database_url
-# DATABASE_URL = os.getenv("DATABASE_URL")
+from dotenv import load_dotenv
+load_dotenv()
 DATABASES = {
-    'default': dj_database_url.parse("mysql://root:AIbHnGhyYGGzNnCwWjLhhNyGZhuHyaWc@nozomi.proxy.rlwy.net:51806/railway", engine="django.db.backends.mysql"),
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),  # Correct variable
+        'PORT': os.getenv('DATABASE_PORT', '16038'),  # Default value if not in .env
+        'OPTIONS': {
+            'ssl': {'ssl-mode': 'REQUIRED'},  # Ensure SSL connection
+        },
+    }
 }
 
 
