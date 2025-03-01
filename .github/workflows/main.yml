@@ -86,6 +86,11 @@ jobs:
 
       - name: Run Tests
         env:
+          DATABASE_NAME: defaultdb
+          DATABASE_USER: avnadmin
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          DATABASE_HOST: simpleeshawarmadb-shawarmadb.l.aivencloud.com
+          DATABASE_PORT: 16038
           DJANGO_SETTINGS_MODULE: Simplee.settings
         run: |
           python manage.py test
