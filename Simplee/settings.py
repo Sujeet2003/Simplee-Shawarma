@@ -76,43 +76,7 @@ WSGI_APPLICATION = 'Simplee.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
-# from urllib.parse import urlparse
-# tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': tmpPostgres.path.decode('utf-8').replace('/', ''),
-#         'USER': tmpPostgres.username,
-#         'PASSWORD': tmpPostgres.password,
-#         'HOST': tmpPostgres.hostname,
-#         'PORT': 5432,
-#     }
-# }
-
-import dj_database_url
-# DATABASE_URL = os.getenv("DATABASE_URL")
-# DATABASES = {
-#     'default': dj_database_url.parse("mysql://root:AIbHnGhyYGGzNnCwWjLhhNyGZhuHyaWc@nozomi.proxy.rlwy.net:51806/railway", engine="django.db.backends.mysql"),
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'defaultdb',
-#         'USER': 'avnadmin',
-#         'PASSWORD': 'AVNS_8uEdTMpWqbi39U5WrSx',
-#         'HOST': 'simpleeshawarmadb-shawarmadb.l.aivencloud.com',
-#         'PORT': '16038',
-#         'OPTIONS': {
-#             'ssl': {'ssl-mode': 'REQUIRED'},  # Ensure SSL connection
-#         },
-#     }
-# }
-
 load_dotenv()
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -126,13 +90,6 @@ DATABASES = {
         },
     }
 }
-
-print("DATABASE_NAME:", os.getenv("DATABASE_NAME"))
-print("DATABASE_USER:", os.getenv("DATABASE_USER"))
-print("DATABASE_PASSWORD:", os.getenv("DATABASE_PASSWORD"))
-print("DATABASE_HOST:", os.getenv("DATABASE_HOST"))
-print("DATABASE_PORT:", os.getenv("DATABASE_PORT"))
-
 
 
 # Password validation
