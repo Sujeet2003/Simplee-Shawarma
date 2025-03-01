@@ -92,8 +92,22 @@ WSGI_APPLICATION = 'Simplee.wsgi.application'
 
 import dj_database_url
 # DATABASE_URL = os.getenv("DATABASE_URL")
+# DATABASES = {
+#     'default': dj_database_url.parse("mysql://root:AIbHnGhyYGGzNnCwWjLhhNyGZhuHyaWc@nozomi.proxy.rlwy.net:51806/railway", engine="django.db.backends.mysql"),
+# }
+
 DATABASES = {
-    'default': dj_database_url.parse("mysql://root:AIbHnGhyYGGzNnCwWjLhhNyGZhuHyaWc@nozomi.proxy.rlwy.net:51806/railway", engine="django.db.backends.mysql"),
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'defaultdb',
+        'USER': 'avnadmin',
+        'PASSWORD': 'AVNS_8uEdTMpWqbi39U5WrSx',
+        'HOST': 'simpleeshawarmadb-shawarmadb.l.aivencloud.com',
+        'PORT': '16038',
+        'OPTIONS': {
+            'ssl': {'ssl-mode': 'REQUIRED'},  # Ensure SSL connection
+        },
+    }
 }
 
 
