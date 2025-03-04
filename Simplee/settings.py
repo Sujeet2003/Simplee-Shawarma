@@ -87,7 +87,7 @@ DATABASES = {
         'HOST': os.getenv('DATABASE_HOST'),  # Correct variable
         'PORT': os.getenv('DATABASE_PORT', '16038'),  # Default value if not in .env
         'OPTIONS': {
-            'ssl': {'ssl-mode': 'REQUIRED'},  # Ensure SSL connection
+            'ssl': {'ssl-mode': 'DISABLED'},  # Ensure SSL connection
         },
     }
 }
