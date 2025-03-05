@@ -18,14 +18,6 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Create .env file
-        run: |
-          echo "DATABASE_NAME=defaultdb" >> .env
-          echo "DATABASE_USER=avnadmin" >> .env
-          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> .env
-          echo "DATABASE_HOST=simpleeshawarmadb-shawarmadb.l.aivencloud.com" >> .env
-          echo "DATABASE_PORT=16038" >> .env
-
       - name: Install dependencies
         run: pip install -r requirements.txt
 
@@ -51,13 +43,27 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build and push Docker images
-        env:
-          DATABASE_NAME: defaultdb
-          DATABASE_USER: avnadmin
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          DATABASE_HOST: simpleeshawarmadb-shawarmadb.l.aivencloud.com
-          DATABASE_PORT: 16038
         run: |
           docker-compose build
           docker tag simpleeshawarma:latest ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
           docker push ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          script: |
+            docker pull ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
+            docker stop simplee_web || true
+            docker rm simplee_web || true
+            docker run -d \
+              -p 8000:8000 \
+              --name simplee_web \
+              -e DATABASE_NAME=defaultdb \
+              -e DATABASE_USER=avnadmin \
+              -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
+              -e DATABASE_HOST=simpleeshawarmadb-shawarmadb.l.aivencloud.com \
+              -e DATABASE_PORT=16038 \
+              ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
