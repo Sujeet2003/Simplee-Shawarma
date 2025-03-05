@@ -18,18 +18,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-
-# Set environment variables from the .env file
-ENV DATABASE_NAME=${DATABASE_NAME}
-ENV DATABASE_HOST=${DATABASE_HOST}
-ENV DATABASE_PORT=${DATABASE_PORT}
-ENV DATABASE_USER=${DATABASE_USER}
-ENV DATABASE_PASSWORD=${DATABASE_PASSWORD}
-
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
-# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "Simplee.wsgi:application"]

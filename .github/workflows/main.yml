@@ -18,6 +18,14 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Create .env file
+        run: |
+          echo "DATABASE_NAME=defaultdb" >> .env
+          echo "DATABASE_USER=avnadmin" >> .env
+          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> .env
+          echo "DATABASE_HOST=simpleeshawarmadb-shawarmadb.l.aivencloud.com" >> .env
+          echo "DATABASE_PORT=16038" >> .env
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
