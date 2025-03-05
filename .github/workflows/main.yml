@@ -67,3 +67,4 @@ jobs:
               -e DATABASE_HOST=simpleeshawarmadb-shawarmadb.l.aivencloud.com \
               -e DATABASE_PORT=16038 \
               ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
+              
