@@ -3,7 +3,7 @@ name: Django CI/CD with Docker Compose
 on:
   push:
     branches:
-      - main  # Adjust this if your branch name is different
+      - main
 
 jobs:
   deploy:
@@ -36,13 +36,19 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-southeast-2  # Change to your region
+          aws-region: ap-southeast-2
 
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build and push Docker images
+        env:
+          DATABASE_NAME: defaultdb
+          DATABASE_USER: avnadmin
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          DATABASE_HOST: simpleeshawarmadb-shawarmadb.l.aivencloud.com
+          DATABASE_PORT: 16038
         run: |
           docker-compose build
           docker tag simpleeshawarma:latest ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
