@@ -3,9 +3,10 @@ attrs==25.1.0
 certifi==2025.1.31
 Django==5.1.6
 sqlparse==0.5.3
-mysqlclient
+mysqlclient==2.2.7
 pytest
+PyYAML==5.3.1
 gunicorn==21.2.0
 whitenoise==6.9.0
-python-dotenv
+python-dotenv==1.0.1
 docker-compose
