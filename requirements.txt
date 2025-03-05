@@ -8,3 +8,4 @@ pytest
 gunicorn==21.2.0
 whitenoise==6.9.0
 python-dotenv
+docker-compose
