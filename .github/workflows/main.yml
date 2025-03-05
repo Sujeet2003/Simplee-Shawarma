@@ -44,7 +44,7 @@ jobs:
 
       - name: Build and push Docker images
         run: |
-          docker-compose build
+          docker build -t simpleeshawarma:latest .
           docker tag simpleeshawarma:latest ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
           docker push ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
 
