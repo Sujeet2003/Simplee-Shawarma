@@ -51,16 +51,19 @@ jobs:
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.EC2_HOST }}  # This will now use 54.205.151.177
-          username: ubuntu
-          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          host: ${{ secrets.AWS_EC2_IP }}
+          username: ${{ secrets.AWS_EC2_USER }}
+          key: ${{ secrets.AWS_EC2_SSH_KEY }}
           script: |
-            docker pull ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
+            # Stop any running container
             docker stop simplee_web || true
             docker rm simplee_web || true
-            docker run -d \
-              -p 8000:8000 \
-              --name simplee_web \
+            
+            # Pull latest image from ECR
+            docker pull ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
+            
+            # Run the container
+            docker run -d --name simplee_web -p 8000:8000 \
               -e DATABASE_NAME=defaultdb \
               -e DATABASE_USER=avnadmin \
               -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
