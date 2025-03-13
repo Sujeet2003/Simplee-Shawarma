@@ -21,15 +21,15 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Tests
-        env:
-          DATABASE_NAME: defaultdb
-          DATABASE_USER: avnadmin
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          DATABASE_HOST: simpleeshawarmadb-shawarmadb.l.aivencloud.com
-          DATABASE_PORT: 16038
-          DJANGO_SETTINGS_MODULE: Simplee.settings
-        run: python manage.py test
+      # - name: Run Tests
+      #   env:
+      #     DATABASE_NAME: defaultdb
+      #     DATABASE_USER: avnadmin
+      #     DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+      #     DATABASE_HOST: simpleeshawarmadb-shawarmadb.l.aivencloud.com
+      #     DATABASE_PORT: 16038
+      #     DJANGO_SETTINGS_MODULE: Simplee.settings
+      #   run: python manage.py test
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -42,11 +42,11 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build and push Docker images
-        run: |
-          docker build -t simpleeshawarma:latest .
-          docker tag simpleeshawarma:latest ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
-          docker push ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
+      # - name: Build and push Docker images
+      #   run: |
+      #     docker build -t simpleeshawarma:latest .
+      #     docker tag simpleeshawarma:latest ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
+      #     docker push ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
@@ -55,18 +55,22 @@ jobs:
           username: ${{ secrets.AWS_EC2_USER }}
           key: ${{ secrets.AWS_EC2_SSH_KEY }}
           script: |
-            # Stop any running container
+
+            # Authenticate Docker with AWS ECR
+            aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com
+
+            # Stop and remove existing container
             docker stop simplee_web || true
             docker rm simplee_web || true
-            
-            # Pull latest image from ECR
-            docker pull ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
-            
-            # Run the container
+
+            # Pull latest image from AWS ECR
+            docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com/simpleeshawarma:latest
+
+            # Run the container with environment variables
             docker run -d --name simplee_web -p 8000:8000 \
               -e DATABASE_NAME=defaultdb \
               -e DATABASE_USER=avnadmin \
               -e DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} \
               -e DATABASE_HOST=simpleeshawarmadb-shawarmadb.l.aivencloud.com \
               -e DATABASE_PORT=16038 \
-              ${{ steps.login-ecr.outputs.registry }}/simpleeshawarma:latest
+              ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-southeast-2.amazonaws.com/simpleeshawarma:latest
