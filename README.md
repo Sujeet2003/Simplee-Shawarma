@@ -9,6 +9,12 @@ This is a Shawarma web app built using `Django`, `Python`, `HTML`, `CSS`, `Boots
 - `CI/CD`: GitHub Actions
 - `Testing`: Unit Tests (Django TestCase), Automated Testing (Selenium)
 
+### 🌐 Hosted On
+
+The application is deployed on an AWS EC2 instance and can be accessed at:
+
+Live Link: http://13.55.126.170:8000/
+
 ### 📂 Project Structure
 Run command in command prompt: `tree /F /A > structure.txt`
         
